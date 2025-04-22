@@ -1,0 +1,24 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import ProductCard from "../components/Productcard.astro";
+
+const url = "https://akpzdomtpqnxsykwlcsi.supabase.co";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFrcHpkb210cHFueHN5a3dsY3NpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUzMTI5ODksImV4cCI6MjA2MDg4ODk4OX0.TBkSYfHMVf8Mr2gATQ-BFkFmbeD9bHovhoYPg9Bjj2U";
+
+const options = {
+  headers: {
+    apikey: key,
+  },
+};
+
+const request = await fetch(url, options);
+const data = await request.json();
+
+console.log("data", data);
+---
+
+<Layout>
+  <h1>Bareen x Jojo</h1>
+  {data.map((product) => <Productcard {product} />)}
+</Layout>
